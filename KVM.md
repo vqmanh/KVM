@@ -6,7 +6,7 @@
  
   `lsmod | grep kvm`
   
-`<img src="https://imgur.com/wpKnkFb">`
+<img src="https://imgur.com/wpKnkFb">
 
 **Update va Cai dat**
 
