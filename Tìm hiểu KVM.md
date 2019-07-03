@@ -1,0 +1,116 @@
+# Tìm hiểu và cài đặt KVM trên CentOS7
+
+## Mục lục
+[1. KVM là gì?](#dinhnghia)
+
+[2. Cách cài đặt KVM](#caidat)
+
+  - [Chuẩn bị](#cb)
+  - [Tiến hành cài đặt](#cai)
+
+[3. Tạo và quản lí máy ảo với virt-manager](#tao)
+
+---
+### <a name = "dinhnghia"> 1. KVM là gì?
+
+KVM (viết tắt của Kernel Virtualization Machine) là công nghệ ảo hóa phần cứng. Có nghĩa là OS (hệ điều hành) chính mô phỏng phần cứng cho các OS khác để chạy trên đó.
+
+KVM VPS không có tài nguyên dùng chung, tất cả đã được mặc định sẵn và chia sẻ. Điều đó có nghĩa là RAM của mỗi VPS KVM đã được phân bổ sẵn cho từng gói VPS để sở hữu, tận dụng hoàn toàn 100% và không bị chia sẻ ra ngoài. Đồng nghĩa với việc VPS KVM sẽ hoạt động ổn định hơn mà không bị ảnh hưởng bởi các VPS khác cùng hoạt động trên hệ thống. Tương tự điều đó với disk space, tài nguyên ổ cứng cũng đã được xác định sẵn và không bị vay mượn bởi các VPS khác.
+### <a name = "caidat"> 2. Cách cài đặt KVM
+#### <a name = "cb"> Chuẩn bị:
+Một máy chạy hệ điều hành CentOS 7 với cấu hình tối thiểu 2 CPU, 2 GB RAM và 10 GB disk.
+
+#### <a name = "cai"> Tiến hành cài đặt
+
+***Update, cài đặt KVM và các gói phụ trợ liên quan***
+
+`yum update -y`
+
+`yum install qemu-kvm libvirt bridge-utils virt-manager -y`
+
+Trong đó:
+
+  - *qemu-kvm*: Phần phụ trợ cho KVM.
+  - *libvirt-bin*: cung cấp libvirt mà bạn cần quản lý qemu và KVM bằng libvirt.
+  - *bridge-utils*: chứa một tiện ích cần thiết để tạo và quản lý các thiết bị bridge.
+  - *virt-manager*: cung cấp giao diện đồ họa để quản lý máy ảo.
+
+***Nếu bạn sử dụng VMWare, hãy nhớ bật chức năng ảo hóa Intel VT-x/EPT hoặc AMD-V/RVI***
+
+
+ <img src="https://i.imgur.com/te8RkiW.png">
+
+***Kiểm tra hệ thống có hỗ trợ KVM hay khônng***
+
+
+  `grep -e 'vmx' /proc/cpuinfo`
+
+  *Nếu kết quả trả về là khác 0 thì CPU có hỗ trợ*
+
+  ***Kiểm tra để chắc chắn rằng KVM đã được cài đặt***
+
+  `lsmod | grep kvm`
+
+  <img src="https://i.imgur.com/wpKnkFb.jpg">
+
+  
+***Start dịch vụ***
+
+  `systemctl start libvirtd`
+  
+  `systemctl enable libvirtd`
+  
+
+***Tạo card br0***
+
+  `nmcli c add type bridge autoconnect yes con-name br0 ifname br0`
+  
+***Cấu hình card br0***
+
+  `vi /etc/sysconfig/network-scripts/ifcfg-br0`
+  
+```
+TYPE=Bridge  
+NAME=br0  
+DEVICE=br0  
+ONBOOT=yes  
+BOOTPROTO=none  
+HWADDR=00:0c:29:6c:77:e6  
+IPADDR=66.0.0.199  
+GATEWAY=66.0.0.1  
+DNS=8.8.8.8  
+NETMASK=255.255.255.0
+```
+***Chỉnh lại card cũ ens33***
+
+  `vi /etc/sysconfig/network-scripts/ifcfg-ens33`
+```
+BRIDGE=br0  
+NAME=ens33  
+DEVICE=ens33  
+ONBOOT=yes  
+BOOTPROTO=none  
+HWADDR=00:0c:29:6c:77:e6
+```
+***Restart lại card mạng***
+
+  `/etc/init.d/network restart`
+
+***Reboot***
+
+### <a name = "tao"> 3. Tạo và quản lí máy ảo với virt-manager
+
+***Tiến hành download file iso và đặt tại thư mục*** ```/var/lib/libvirt/images```
+
+`wget http://mirrors.nhanhoa.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso /var/lib/libvirt/images`
+
+***Mở virt-manager***
+
+`virt-manager`
+
+<img src=https://i.imgur.com/dwygI4D.jpg>
+
+
+
+
+
