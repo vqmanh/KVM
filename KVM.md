@@ -43,6 +43,7 @@ DNS=8.8.8.8
 NETMASK=255.255.255.0
 ```
 **Chỉnh lại card cũ ens33**
+
   `vi /etc/sysconfig/network-scripts/ifcfg-ens33`
 ```
 BRIDGE=br0  
