@@ -27,7 +27,7 @@
 
 ***Tạo máy ảo với file ISO***
 
-`virt-install --name=CentOS7 --file=/var/kvm/images/centos7.img --file-size=20 --nonsparse --graphics spice --vcpus=2 --ram=2048 --cdrom=CentOS-7-x86_64-DVD-1708.iso --network bridge=br0 --os-type=linux --os-variant=generic`
+`virt-install --name=CentOS7 --file=/var/kvm/images/centos7.img --file-size=20 --nonsparse --graphics spice --vcpus=2 --ram=2048 --cdrom=/var/lib/libvirt/images/CentOS-7-x86_64-DVD-1708.iso --network bridge=br0 --os-type=linux --os-variant=generic`
 
 **Trong đó:**
   - –name = Đặt tên cho máy ảo
@@ -41,7 +41,7 @@
     - Một vài tùy chọn khác như "listen", "password"
   - –vcpu = Đặt số lượng CPU
   - –ram = Đặt số lượng RAM
-  - –cdrom = Tên file ISO
+  - –cdrom = Đường dẫn đến file ISO
   - –network = Lựa chọn card Bridge br0
   - –os-type = Chọn loại hệ điều hành (ví dụ như linux hoặc window). Mặc định, virt-install sẽ tự động xác định thông qua file cài đặt.
   - -os-variant=generic = Là một optional command, cho biết xa hơn về loại hệ điều hành (ví dụ như fedora8 hoặc winxp). Sử dụng --os-variant list để xem tất cả list os
