@@ -105,7 +105,6 @@ HWADDR=00:0c:29:6c:77:e6
 
 ***Chú ý: Nên sử dụng MobaXterm để SSH vào thì mới có thể sử dụng được virt-manager***
 
-**CÁCH 1: Tạo máy ảo với giao diện virt-manager**
 
 ***Bước 1: Tiến hành download file iso và đặt tại thư mục*** ```/var/lib/libvirt/images```
 
@@ -152,30 +151,3 @@ Sau đó tiến hành cài đặt như bình thường
 <img src=https://imgur.com/etSulfP.jpg>
 
 
-**CÁCH 2: Tạo máy ảo bằng lệnh**
-
-***Tạo nơi lưu trữ máy ảo***
-
-`mkdir -p /var/kvm/images`
-
-***Sử dụng dòng lệnh***
-
-`virt-install --name=CentOS7 --file=/var/kvm/images/centos7.img --file-size=20 --nonsparse --graphics spice --vcpus=2 --ram=2048 --cdrom=CentOS-7-x86_64-DVD-1708.iso --network bridge=br0 --os-type=linux --os-variant=generic`
-
-**Trong đó:**
-  - –name = Đặt tên cho máy ảo
-  - –file = Vị trí nơi lưu trữ máy ảo
-  - –file-size = Kích thước máy ảo
-  - –nonsparse = Phân bổ toàn bộ lưu trữ trong khi tạo
-  - –graphics = Đi kèm với các tùy chọn sau
-
-    - "type": Loại đồ họa. Có thể chọn "vnc" hoặc "sdl", "spice" và "none"
-    - "port": nếu người dùng sử dụng vnc hoặc spice thì sẽ phải khai báo port cố định cho dịch vụ này
-    - Một vài tùy chọn khác như "listen", "password"
-  - –vcpu = Đặt số lượng CPU
-  - –ram = Đặt số lượng RAM
-  - –cdrom = Tên file ISO
-  - –network = Lựa chọn card Bridge br0
-  - –os-type = Chọn loại hệ điều hành (ví dụ như linux hoặc window). Mặc định, virt-install sẽ tự động xác định thông qua file cài đặt.
-  - -os-variant=generic = Là một optional command, cho biết xa hơn về loại hệ điều hành (ví dụ như fedora8 hoặc winxp). Sử dụng --os-variant list để xem tất cả list os
-  
