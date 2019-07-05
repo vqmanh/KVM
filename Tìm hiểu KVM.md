@@ -167,10 +167,15 @@ Sau đó tiến hành cài đặt như bình thường
   - –file = Vị trí nơi lưu trữ máy ảo
   - –file-size = Kích thước máy ảo
   - –nonsparse = Phân bổ toàn bộ lưu trữ trong khi tạo
-  - –graphics = Công cụ đồ họa để cài đặt tương tác
+  - –graphics = Đi kèm với các tùy chọn sau
+
+    - "type": Loại đồ họa. Có thể chọn "vnc" hoặc "sdl", "spice" và "none"
+    - "port": nếu người dùng sử dụng vnc hoặc spice thì sẽ phải khai báo port cố định cho dịch vụ này
+    - Một vài tùy chọn khác như "listen", "password"
   - –vcpu = Đặt số lượng CPU
   - –ram = Đặt số lượng RAM
   - –cdrom = Tên file ISO
   - –network = Lựa chọn card Bridge br0
-  - –os-type = Kiểu hệ điều hành
+  - –os-type = Chọn loại hệ điều hành (ví dụ như linux hoặc window). Mặc định, virt-install sẽ tự động xác định thông qua file cài đặt.
+  - -os-variant=generic = Là một optional command, cho biết xa hơn về loại hệ điều hành (ví dụ như fedora8 hoặc winxp). Sử dụng --os-variant list để xem tất cả list os
   
