@@ -224,7 +224,6 @@ Sau đó tiến hành cài đặt như bình thường
 
 `virt-install --name=CentOS7 --file=/var/kvm/images/centos7.img --file-size=10 --nonsparse --graphics spice --vcpus=2 --ram=2048 --cdrom=/var/lib/libvirt/images/CentOS-7-x86_64-DVD-1708.iso --network bridge=br0 --os-type=linux --os-variant=generic`
 
-<img src=https://imgur.com/hgdSqS1.jpg>
 
 **Trong đó:**
   - –name = Đặt tên cho máy ảo
