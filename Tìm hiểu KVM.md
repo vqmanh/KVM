@@ -136,7 +136,7 @@ HWADDR=00:0c:29:6c:77:e6
   `virt-top`
 
 
-#### <a name = "manager"> Sử dụng virt-manager
+#### <a name = "manager"> b. Sử dụng virt-manager
 
 ***Chú ý: Nên sử dụng MobaXterm để SSH vào thì mới có thể sử dụng được virt-manager***
 
@@ -193,7 +193,7 @@ Sau đó tiến hành cài đặt như bình thường
 
 <img src=https://imgur.com/etSulfP.jpg>
 
-#### <a name = "install"> Sử dụng virt-install
+#### <a name = "install"> c. Sử dụng virt-install
 
 **Bước 1: Cài virt-install và virt-viewer để hỗ trợ cài máy ảo**
 
