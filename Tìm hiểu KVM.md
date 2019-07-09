@@ -299,27 +299,9 @@ Các bạn cài đặt như bình thường
 `./manage.py syncdb`
 
 ***Nó sẽ hiển thị để cho ta nhập một số thông số cần thiết như username, địa chỉ E-mail, và password***
-```
-You just installed Django's auth system, which means you don't have any superusers defined.
 
-Would you like to create one now? (yes/no): yes
 
-Username (leave blank to use 'root'): 
-
-Email address: 
-
-Password: 
-
-Password (again): 
-
-Superuser created successfully.
-
-Installing custom SQL ...
-
-Installing indexes ...
-
-Installed 6 object(s) from 1 fixture(s)
-```
+<img src=https://imgur.com/XXAnz1d.jpg>
 
 ***Sau đó tiếp tục chạy lệnh***
 
@@ -436,3 +418,53 @@ systemctl restart supervisord
 `systemctl stop firewalld`
 
 
+**Sử dụng WebvirtMgr**
+
+**Bước 1: Ta dùng tài khoản ta tạo ở bên trên để đăng nhập vào. Để kết nối đến máy KVM click và Add connection. Nhập IP của HostKVM.**
+
+<img src=https://imgur.com/iTyBQ7v.jpg>
+
+***Kết nối thành công sẽ hiện lên giao diện như sau***
+
+<img src=https://imgur.com/pJo89BW.jpg>
+
+**Bước 2: Click vào kết nối đó chọn Storages sau đó là New storages để tạo vị trí lưu các file khi tạo máy ảo**
+
+<img src=https://imgur.com/OOAyQ56.jpg>
+
+***Chọn thư mục chứa disk của VM***
+
+<img src=https://imgur.com/E0Til9Q.jpg>
+
+***Chọn thư mục lưu file XML của VM***
+
+<img src=https://imgur.com/HfRwbzg.jpg>
+
+**Bước 4: Thiết lập mạng cho các VM bằng cách click vào Networks**
+
+<img src=https://imgur.com/a9Fh9VT.jpg>
+
+**Bước 5: Để tạo VM trước tiên ta cần tạo cho VM đó 1 file image. Để tạo file ta vào Storage chọn vị trí lưu file image trong các thư mục ta vừa thêm ở bên trên sau đó chọn Add image. Sau đó chọn tên image, định dạng và dung lượng**
+
+<img src=https://imgur.com/r0yE6HZ.jpg>
+
+
+**Bước 6: Chọn New instance => Custom instance để tạo VM**
+
+<img src=https://imgur.com/sMsKAyw.jpg>
+
+***Chú ý các thông số tên VM, số CPU, dung lượng RAM, HDD để chỉ ra file image của VM trỏ đến file vừa tạo, network để chọn mạng cho VM => Create***
+
+<img src=https://imgur.com/72pVvaZ.jpg>
+
+**Bước 7: Chọn hệ điều hành cho VM bằng cách chỉ ra file ISO => Connect**
+
+<img src=https://imgur.com/Xcoo5dp.jpg>
+
+**Bước 8: Chọn Power => Start**
+
+<img src=https://imgur.com/hHI2NIV.jpg>
+
+***Sau đó, chọn Access => Console để hiển thị giao diện VM***
+
+<img src=https://imgur.com/XDsqEgR.jpg>
