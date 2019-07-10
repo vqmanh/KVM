@@ -417,6 +417,40 @@ systemctl restart supervisord
 
 `systemctl stop firewalld`
 
+***Muốn xác thực để tiến hành kết nối qemu+tcp bạn thực hiện câu lệnh sau***
+
+***Tiến hành cài đặt gói cyrus-sasl-md5***
+
+`yum install cyrus-sasl-md5`
+
+`sed -i 's/mech_list: gssapi/#mech_list: gssapi/g' /etc/sasl2/libvirt.conf`
+
+`sed -i 's/#sasldb_path: /etc/libvirt/passwd.db/#sasldb_path: /etc/libvirt/passwd.db/g' /etc/sasl2/libvirt.conf`
+
+`sed -i 's/#auth_tcp = "sasl"/auth_tcp = "sasl"/g' /etc/libvirt/libvirtd.conf`
+
+`sed -i 's/#user = "root"/user = "root"/g' /etc/libvirt/qemu.conf`
+
+`sed -i 's/#group = "root"/group = "root"/g' /etc/libvirt/qemu.conf`
+
+`sed -i 's/#LIBVIRTD_ARGS="--listen"/LIBVIRTD_ARGS="--listen"/g' /etc/sysconfig/libvirtd`
+
+***Restart lại libvirtd***
+
+`systemctl restart libvirtd`
+
+***Sau đó ta cần tạo user để xác thực cho kết nối qemu+tcp***
+
+`saslpasswd2 -a libvirt username`
+
+***Show các user***
+
+`sasldblistusers2 -f /etc/libvirt/passwd.db`
+
+***Để xóa user***
+
+`saslpasswd2 -a libvirt -d username`
+
 
 **Sử dụng WebvirtMgr**
 
