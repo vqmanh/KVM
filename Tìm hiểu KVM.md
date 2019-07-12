@@ -80,8 +80,7 @@ TYPE=Bridge
 NAME=br0  
 DEVICE=br0  
 ONBOOT=yes  
-BOOTPROTO=none  
-HWADDR=00:0c:29:6c:77:e6  
+BOOTPROTO=none   
 IPADDR=66.0.0.199  
 GATEWAY=66.0.0.1  
 DNS=8.8.8.8  
@@ -96,7 +95,6 @@ NAME=ens33
 DEVICE=ens33  
 ONBOOT=yes  
 BOOTPROTO=none  
-HWADDR=00:0c:29:6c:77:e6
 ```
 *Lưu ý: Không nên xóa card ens33 khi bạn sử dụng môi trường lab VMware. Vì khi bạn đang SSH vào sẽ bị mất kết nối*
 
@@ -276,11 +274,11 @@ Các bạn cài đặt như bình thường
 
 **Bước 2: Cài một số gói cần thiết**
 
-`yum install epel-release`
+`yum install epel-release -y`
 
-`yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor nginx cyrus-sasl-md5`
+`yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor nginx cyrus-sasl-md5 -y`
 
-`yum -y install gcc python-devel`
+`yum -y install gcc python-devel -y`
 
 `pip install --upgrade pip`
 
