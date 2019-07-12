@@ -450,7 +450,7 @@ systemctl restart supervisord
 
 `systemctl restart libvirtd`
 
-***Nếu bên trên bạn để xác thực kết nối qemu+tcp thì bạn cần thực hiện thêm một lệnh sau:***
+***Nếu bên trên bạn để xác thực kết nối qemu+tcp thì bạn cần thực hiện thêm các lệnh sau:***
 
 ***Tiến hành cài đặt gói cyrus-sasl-md5***
 
