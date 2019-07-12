@@ -417,6 +417,22 @@ systemctl restart supervisord
 
 `systemctl stop firewalld`
 
+***Nếu ko muốn bạn có thể mở port 16509 để webvirtmgr có thể kết nối đến***
+
+***Trước tiên cần cài gói libvirt***
+
+`yum install libvirt`
+
+***Tiếp theo cài lần lượt các lệnh sau***
+
+`sed -i 's/#listen_tls = 0/listen_tls = 0/g' /etc/libvirt/libvirtd.conf`
+
+`sed -i 's/#listen_tcp = 1/listen_tcp = 1/g' /etc/libvirt/libvirtd.conf`
+
+`sed -i 's/#tcp_port = "16509"/tcp_port = "16509"/g' /etc/libvirt/libvirtd.conf`
+
+`sed -i 's/#listen_addr = "66.0.0.1"/listen_addr = "0.0.0.0"/g' /etc/libvirt/libvirtd.conf`
+
 ***Muốn xác thực để tiến hành kết nối qemu+tcp bạn thực hiện câu lệnh sau***
 
 ***Tiến hành cài đặt gói cyrus-sasl-md5***
