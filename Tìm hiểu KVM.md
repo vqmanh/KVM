@@ -429,17 +429,13 @@ systemctl restart supervisord
 
 `sed -i 's/#tcp_port = "16509"/tcp_port = "16509"/g' /etc/libvirt/libvirtd.conf`
 
-`sed -i 's/#listen_addr = "66.0.0.1"/listen_addr = "0.0.0.0"/g' /etc/libvirt/libvirtd.conf`
+`sed -i 's/#listen_addr = "192.168.0.1"/listen_addr = "0.0.0.0"/g' /etc/libvirt/libvirtd.conf`
+
+***Lưu ý nếu bạn không muốn xác thực trong quá trình kết nối qemu+tcp ta thực hiện lệnh sau (chỉ nên dùng trong môi trường lab)***
+
+`sed -i 's/#auth_tcp = "sasl"/auth_tcp = "none"/g' /etc/libvirt/libvirtd.conf`
 
 ***Muốn xác thực để tiến hành kết nối qemu+tcp bạn thực hiện câu lệnh sau***
-
-***Tiến hành cài đặt gói cyrus-sasl-md5***
-
-`yum install cyrus-sasl-md5`
-
-`sed -i 's/mech_list: gssapi/#mech_list: gssapi/g' /etc/sasl2/libvirt.conf`
-
-`sed -i 's/#sasldb_path: /etc/libvirt/passwd.db/#sasldb_path: /etc/libvirt/passwd.db/g' /etc/sasl2/libvirt.conf`
 
 `sed -i 's/#auth_tcp = "sasl"/auth_tcp = "sasl"/g' /etc/libvirt/libvirtd.conf`
 
@@ -449,9 +445,26 @@ systemctl restart supervisord
 
 `sed -i 's/#LIBVIRTD_ARGS="--listen"/LIBVIRTD_ARGS="--listen"/g' /etc/sysconfig/libvirtd`
 
+
 ***Restart lại libvirtd***
 
 `systemctl restart libvirtd`
+
+***Nếu bên trên bạn để xác thực kết nối qemu+tcp thì bạn cần thực hiện thêm một lệnh sau:***
+
+***Tiến hành cài đặt gói cyrus-sasl-md5***
+
+`yum install cyrus-sasl-md5`
+
+`sed -i 's/mech_list: gssapi/#mech_list: gssapi/g' /etc/sasl2/libvirt.conf`
+
+`sed -i 's/#sasldb_path: \/etc\/libvirt\/passwd.db/sasldb_path: \/etc\/libvirt\/passwd.db/g' /etc/sasl2/libvirt.conf`
+
+***Sau đó tiến hành restart lại libvirtd***
+
+`systemctl restart libvirtd`
+
+
 
 ***Sau đó ta cần tạo user để xác thực cho kết nối qemu+tcp***
 
