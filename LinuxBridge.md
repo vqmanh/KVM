@@ -197,7 +197,9 @@ Linux bridge được hỗ trợ từ version nhân kernel từ 2.4 trở lên. 
 <a name = "E1"></a>
 ### E1. Chuẩn bị
 
-<img src=https://imgur.com/RCDc6z8.jpg>
+**Mô hình bài lab**
+
+<img src=https://imgur.com/M9nAwDV.jpg>
 
 
 - Một máy ảo với card ens33 thuộc dải 66.0.0.0/24, cài HDH CentOS7
@@ -206,7 +208,7 @@ Linux bridge được hỗ trợ từ version nhân kernel từ 2.4 trở lên. 
 
 *Các bạn có thể xem lại bài tạo máy ảo trên KVM tại [đây](https://github.com/vqmanh/KVM/blob/master/T%C3%ACm%20hi%E1%BB%83u%20KVM.md)*
 
-- Nội dung bài lab: Tạo một switch ảo br0 và gán interface ens33 vào switch đó. Trên Host KVM tạo 2 máy ảo: kvm1 và kvm2. Cả 2 vm cùng gắn vào tap interface của switch br0. Ping kiểm tra kết nối.
+- Nội dung bài lab: Tạo một switch ảo br0 và gán interface ens33 vào switch đó. Trên Host KVM tạo 2 máy ảo: vm0 và vm1. Cả 2 vm cùng gắn vào tap interface của switch br0. Ping kiểm tra kết nối.
 
 <a name = "E2"></a>
 ### E2. Triển khai
@@ -221,13 +223,11 @@ Linux bridge được hỗ trợ từ version nhân kernel từ 2.4 trở lên. 
 
 - *Khi tạo bridge bằng command brctl addbr thì bridge là non-persistent bridge (tức là sẽ không có hiệu lực khi hệ thống khởi động lại).*
 
-- *Ban đầu, khi mới được tạo, bridge sẽ có một địa chỉ MAC mặc định ban đầu. Khi thêm một NIC của host vào thì MAC của bridge sẽ là MAC của NIC luôn. Khi del hết các NIC của host trên bridge thì MAC của bridge sẽ về là 00:00:00:00:00:00 và chờ khi nào có NIC khác add vào thì sẽ lấy MAC của NIC đó.*
-
 - *Khi cấu hình bằng câu lệnh brctl, các ảnh hưởng của nó sẽ biến mất sau khi khởi động lại hệ thống host server. Để lưu lại thông tin cấu hình trên bridge và khởi động lại cùng hệ thống thì nên lưu lại cấu hình vào file (Ghi vào file, khi boot lại hệ thống, thông tin trong file cũng được cấu hình lại. Những thông tin được lưu dưới dạng file, thì luôn khởi động cùng hệ thống - nên có thể coi là vĩnh viễn - trừ khi tự tay stop lại dịch vụ.)*
 
 
 
-***Bước 2: Cấu hình***
+**Bước 2: Cấu hình**
 
 `vi /etc/sysconfig/network-scripts/ifcfg-br0`
 
@@ -252,17 +252,36 @@ ONBOOT=yes
 BOOTPROTO=none  
 ```
 
-***Bước 3: Gán ens33 vào swicth br0***
+**Bước 3: Gán card ens33 vào switch br0**
 
 `brctl addif br0 ens33`
 
 `brctl stp br0 on` *#enable tính năng STP nếu cần*
 
-***Bước 4: Restart lại card mạng***
+<img src=https://imgur.com/RFf9g9n.jpg>
+
+*Ban đầu, khi mới được tạo, bridge sẽ có một địa chỉ MAC mặc định ban đầu. Khi thêm một NIC của host vào thì MAC của bridge sẽ là MAC của NIC luôn. Khi del hết các NIC của host trên bridge thì MAC của bridge sẽ về là 00:00:00:00:00:00 và chờ khi nào có NIC khác add vào thì sẽ lấy MAC của NIC đó.* 
+
+**Bước 4: Restart lại card mạng**
 
 `/etc/init.d/network restart`
 
+*Khi khởi động lại, hệ thông sẽ đọc file cấu hình, và cấp địa chỉ cho interface br0 (đại điện cho bridge br0) thông qua liên kết giữa ens33 và mạng 66.0.0.0/24. Và các máy VM kết nối tới bridge, lấy chung dải mạng với bridge thông qua liên kết uplink qua ens33 và có thể liên lạc với mạng bên ngoài.*
 
+**Bước 5: Sau khi tạo 2 máy ảo như mô hình. Chúng ta sẽ kiểm tra với lệnh `brctl show`**
 
+<img src=https://imgur.com/yKJMe4A.jpg>
+
+*Như các bạn đã thấy cả 2 vm cùng gắn vào tap interface của switch br0. Trên switch br0 sẽ tự sinh ra 2 port ảo vnet0 và vnet1 của 2 máy ảo vm0 và vm1 *
+
+***Sau đó, chúng ta sẽ kiểm tra trên 2 vm xem địa chỉ MAC có khớp với 2 card ảo hay không.***
+
+***Trên máy ảo vm0 ta thấy địa chỉ MAC của card eth0 chính là địa chỉ MAC của port vnet0***
+
+<img src=https://imgur.com/I37oi7F.jpg>
+
+***Tương tự với máy ảo vm1***
+
+<img src=https://imgur.com/btoE2n6.jpg>
 
 
