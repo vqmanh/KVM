@@ -272,11 +272,11 @@ BOOTPROTO=none
 
 <img src=https://imgur.com/yKJMe4A.jpg>
 
-*Như các bạn đã thấy cả 2 vm cùng gắn vào tap interface của switch br0. Trên switch br0 sẽ tự sinh ra 2 port ảo vnet0 và vnet1 của 2 máy ảo vm0 và vm1 *
+*Như các bạn đã thấy cả 2 vm cùng gắn vào tap interface của switch br0. Trên switch br0 sẽ tự sinh ra 2 port ảo vnet0 và vnet1 của 2 máy ảo vm0 và vm1*
 
 ***Sau đó, chúng ta sẽ kiểm tra trên 2 vm xem địa chỉ MAC có khớp với 2 card ảo hay không.***
 
-***Trên máy ảo vm0 ta thấy địa chỉ MAC của card eth0 chính là địa chỉ MAC của port vnet0***
+*Trên máy ảo vm0 ta thấy địa chỉ MAC của card eth0 chính là địa chỉ MAC của port vnet0*
 
 <img src=https://imgur.com/I37oi7F.jpg>
 
