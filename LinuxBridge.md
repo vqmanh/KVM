@@ -206,9 +206,9 @@ Linux bridge được hỗ trợ từ version nhân kernel từ 2.4 trở lên. 
 
 - Máy ảo đã cài đặt sẵn các công cụ để quản lý và tạo máy ảo KVM.
 
-*Các bạn có thể xem lại bài tạo máy ảo trên KVM tại [đây](https://github.com/vqmanh/KVM/blob/master/T%C3%ACm%20hi%E1%BB%83u%20KVM.md)*
-
 - Nội dung bài lab: Tạo một switch ảo br0 và gán interface ens33 vào switch đó. Trên Host KVM tạo 2 máy ảo: vm0 và vm1. Cả 2 vm cùng gắn vào tap interface của switch br0. Ping kiểm tra kết nối.
+
+*Các bạn có thể xem lại bài tạo máy ảo trên KVM tại [đây](https://github.com/vqmanh/KVM/blob/master/T%C3%ACm%20hi%E1%BB%83u%20KVM.md)*
 
 <a name = "E2"></a>
 ### E2. Triển khai
