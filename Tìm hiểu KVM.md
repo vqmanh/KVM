@@ -96,7 +96,8 @@ DEVICE=ens33
 ONBOOT=yes  
 BOOTPROTO=none  
 ```
-*Lưu ý: Không nên xóa card ens33 khi bạn sử dụng môi trường lab VMware. Vì khi bạn đang SSH vào sẽ bị mất kết nối*
+
+*Bạn có thể tham khảo bài viết sau [Linux Bridge](https://github.com/vqmanh/KVM/blob/master/LinuxBridge.md#A2)*
 
 **Bước 6: Restart lại card mạng**
 
