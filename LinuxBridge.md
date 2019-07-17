@@ -90,6 +90,7 @@ Một số khái niệm liên quan tới linux bridge:
 
 -	fd: forward data - chuyển tiếp dữ liệu từ máy ảo tới bridge.
 
+<a name = "B2"></a>
 ### B2. Các tính năng của Linux bridge
 
 - **STP**: Spanning Tree Protocol - giao thức chống loop gói tin trong mạng.
