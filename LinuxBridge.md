@@ -266,7 +266,7 @@ BOOTPROTO=none
 
 `/etc/init.d/network restart`
 
-*Khi khởi động lại, hệ thông sẽ đọc file cấu hình, và cấp địa chỉ cho interface br0 (đại điện cho bridge br0) thông qua liên kết giữa ens33 và mạng 66.0.0.0/24. Và các máy VM kết nối tới bridge, lấy chung dải mạng với bridge thông qua liên kết uplink qua ens33 và có thể liên lạc với mạng bên ngoài.*
+*Khi khởi động lại, hệ thống sẽ đọc file cấu hình, và cấp địa chỉ cho interface br0 (đại điện cho bridge br0) thông qua liên kết giữa ens33 và mạng 66.0.0.0/24. Và các máy VM kết nối tới bridge, lấy chung dải mạng với bridge thông qua liên kết uplink qua ens33 và có thể liên lạc với mạng bên ngoài.*
 
 **Bước 5: Sau khi tạo 2 máy ảo như mô hình. Chúng ta sẽ kiểm tra với lệnh `brctl show`**
 
@@ -284,4 +284,5 @@ BOOTPROTO=none
 
 <img src=https://imgur.com/btoE2n6.jpg>
 
+                                            Chúc bạn thành công!!
 
