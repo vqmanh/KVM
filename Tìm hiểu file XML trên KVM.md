@@ -13,7 +13,7 @@
 
 ## 2. Các thành phần trong file XML
 
-**Ta có thể dùng lệnh virsh edit tên_file để chỉnh sửa (chú ý tên file bỏ phần đuôi .xml) hoặc ta cũng có thể sử dụng vi hoặc vim để chỉnh sủa nó.**
+**Ta có thể dùng lệnh virsh edit tên_file để chỉnh sửa (chú ý tên file bỏ phần đuôi .xml) hoặc ta cũng có thể sử dụng vi hoặc vim để chỉnh sửa**
 
 ***Trong file xml này chứa rất nhiều thông số nhưng ở đây tôi chỉ đề cập đến một số thông số đáng chú ý***
 
@@ -38,13 +38,13 @@
 
 
 
-Ở dòng đầu tiên của cấu hình card mạng ta thấy dòng `interface type='bridge'` Ở dòng này chúng ta để là network nếu chúng ta sử dụng mô hình NAT hoặc host-only và để là bridge nếu sử dụng mô hình bridge
+Ở dòng đầu tiên của cấu hình card mạng ta thấy dòng `interface type='bridge'` ở dòng này chúng ta để là network nếu chúng ta sử dụng mô hình NAT hoặc host-only và để là bridge nếu sử dụng mô hình bridge
 
 Ở dòng `mac address` nếu ta thêm card mạng thì ta không cần đặt mà hệ thống sẽ tự gen cho ta. Sau khi add thêm địa chỉ mac sẽ xuất hiện.
 
-Chú ý đến các vị trí gạch đỏ. Ở dòng source ta để là `source network` nếu phần `interface type` ta để là `network` và `source bridge` nếu `interface type` là `bridge` Sau đó nếu mà `network `thì chỉ ra mạng ảo kết nối tới. Còn nếu để `bridge` thì chỉ ra tên của switch ảo.
+Chú ý đến các vị trí gạch đỏ. Ở dòng `source` ta để là `source network` nếu phần `interface type` ta để là `network` và `source bridge` nếu `interface type` là `bridge` Sau đó nếu mà `network `thì chỉ ra mạng ảo kết nối tới. Còn nếu để `bridge` thì chỉ ra tên của switch ảo.
 
-Ở card mạng đầu tiên ta cần thêm `multifunction='on'` vào vị trí như ở trên để cho phép sử dụng nhiều PCI. Và các card ta cần thay đổi đánh số thứ tự từ 0 đến hết cho các card ở mục function như tôi đánh dấu ở trên để thay đổi chỉ số PCI cho các card.
+Ở card mạng đầu tiên ta cần thêm `multifunction='on'` vào vị trí như ở trên để cho phép sử dụng nhiều PCI. Và các card ta cần thay đổi đánh số thứ tự từ 0 đến hết cho các card ở mục 'function' như tôi đánh dấu ở trên để thay đổi chỉ số PCI cho các card.
 
 Sau khi sửa đổi file xml ta cần chạy lệnh `virsh define tên_file`để máy ảo có thể cập nhật thay đổi đó.
 
@@ -62,7 +62,7 @@ Sau khi sửa đổi file xml ta cần chạy lệnh `virsh define tên_file`đ�
 
 <img src=https://imgur.com/RZIQpaR.jpg>
 
-Sau khi dump xong, chúng ta sẽ vào file dump ra và sửa cấu hình:
+Sau khi dump xong, chúng ta sẽ vào file dump được tạo và sửa cấu hình:
 
 - Sửa `name` tên máy mới
 
