@@ -68,9 +68,12 @@ Sau khi dump xong, chúng ta sẽ vào file dump được tạo và sửa cấu 
 
 - Xóa bỏ `uuid`
 
-- Xóa `mac address`
+<img src=https://imgur.com/qOHNWsD.jpg>
 
 - Sửa `source file` đến nơi lưu trữ mới
+
+- Xóa `mac address`
+
 
 Sau đó sử dụng lệnh 
 `virsh define tên_file_xml_mới `
