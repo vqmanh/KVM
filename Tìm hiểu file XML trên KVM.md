@@ -32,7 +32,7 @@
 
 ***Ở mục interface sẽ cho ta biết được địa chỉ MAC và card đang sử dụng***
 
-*Các bạn có thể thêm card mạng bằng các sửa file XML*
+*Các bạn có thể thêm card mạng bằng cách sửa file XML*
 
 <img src=https://imgur.com/z56sruv.jpg>
 
@@ -47,6 +47,7 @@ Chú ý đến các vị trí gạch đỏ. Ở dòng source ta để là `sourc
 Ở card mạng đầu tiên ta cần thêm `multifunction='on'` vào vị trí như ở trên để cho phép sử dụng nhiều PCI. Và các card ta cần thay đổi đánh số thứ tự từ 0 đến hết cho các card ở mục function như tôi đánh dấu ở trên để thay đổi chỉ số PCI cho các card.
 
 Sau khi sửa đổi file xml ta cần chạy lệnh `virsh define tên_file`để máy ảo có thể cập nhật thay đổi đó.
+
 *VD: virsh define centos7.0.xml*
 
 ## 3. Dump file xml
