@@ -72,13 +72,21 @@ Sau khi dump xong, chúng ta sẽ vào file dump được tạo và sửa cấu 
 
 - Sửa `source file` đến nơi lưu trữ mới
 
+<img src=https://imgur.com/qcWAzvX.jpg>
+
+*VD: bạn có thể đổi đến /var/lib/libvirt/images/centos7.0-3.qcow2*
+
 - Xóa `mac address`
 
 
 Sau đó sử dụng lệnh 
+
 `virsh define tên_file_xml_mới `
 
+
 <img src=https://imgur.com/bk0yNGq.jpg>
+
+*Sau khi xong: `uuid`, `mac address` sẽ được cập nhật*
 
 Sau đó vào virt-manager rồi chạy máy ảo như bình thường.
 
