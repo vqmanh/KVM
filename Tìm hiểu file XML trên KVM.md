@@ -76,8 +76,6 @@ Sau khi dump xong, chúng ta sẽ vào file dump được tạo và sửa cấu 
 
 *VD: bạn có thể đổi đến /var/lib/libvirt/images/centos7.0-3.qcow2*
 
-- Xóa `mac address`
-
 
 Sau đó sử dụng lệnh 
 
