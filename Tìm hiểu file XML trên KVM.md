@@ -22,13 +22,8 @@
 - name: Tên máy ảo, chỉ bao gồm kí tự chữ và số và không được trùng với những máy ảo đang chạy.
 - uuid: Mã nhận dạng quốc tế duy nhất cho máy ảo.
 - memory: Lượng ram của máy ảo
-- vcpu: Số cpu máy ảo được cài đặt
+- vcpu: Số cpu máy ảo được cài đặt (bạn có thể tăng giảm cho phù hợp với cấu hình)
 
-***Ở mục devices có thể cho ta biết được vị trí lưu của file images***
-
-<img src=https://imgur.com/USoa3Qh.jpg>
-
-- Vị trí lưu máy ảo này là: /var/lib/libvirt/images/centos7.0.qcow2
 
 ***Ở mục interface sẽ cho ta biết được địa chỉ MAC và card đang sử dụng***
 
@@ -49,6 +44,26 @@ Chú ý đến các vị trí gạch đỏ. Ở dòng `source` ta để là `sou
 Sau khi sửa đổi file xml ta cần chạy lệnh `virsh define tên_file`để máy ảo có thể cập nhật thay đổi đó.
 
 *VD: virsh define centos7.0.xml*
+
+*Kiểm tra trên vm*
+
+<img src=https://imgur.com/GhoQZnd.jpg>
+
+***Ở mục devices có thể cho ta biết được vị trí lưu của file images, tương tự các bạn có thể add thêm disk như cách add card mạng***
+
+<img src=https://imgur.com/gtSXFg0.jpg>
+
+
+- Vị trí lưu máy ảo này là: /var/lib/libvirt/images/centos7.0.qcow2
+
+- Khi add thêm disk, các bạn có thể tạo thêm nơi lưu trữ với lệnh:
+`qemu-img create -f qcow2 cent7  2G`
+
+- Thay `dev=sda` bằng `dev=sdb`
+
+*Sau đó kiểm tra trên virt-manager*
+
+<img src=https://imgur.com/UnsPXbl.jpg>
 
 ## 3. Dump file xml
 
