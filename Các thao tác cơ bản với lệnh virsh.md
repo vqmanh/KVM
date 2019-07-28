@@ -82,8 +82,15 @@ VD:
 
 <img src=https://imgur.com/yc1fgj1.jpg>
 
-## Clone máy ảo
+## 5. Clone máy ảo
 
 ### Cài công cụ để clone
 `yum install virt-clone -y`
 
+**Sử dụng lệnh dưới đây sẽ tự động tạo tên máy clone mới và đường dẫn đến nơi lưu trữ mới**
+
+`virt-clone -o tên_máy_ảo --auto-clone`
+
+VD:
+
+<img src=https://imgur.com/wHMULoY.jpg>
