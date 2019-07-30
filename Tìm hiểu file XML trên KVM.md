@@ -59,7 +59,7 @@ Sau khi sửa đổi file xml ta cần chạy lệnh `virsh define tên_file`đ�
 - Khi add thêm disk, các bạn có thể tạo thêm nơi lưu trữ với lệnh:
 `qemu-img create -f qcow2 cent7  2G`
 
-- Thay `dev=sda` bằng `dev=sdb`
+- Thay `dev=vda` bằng `dev=vdb`
 
 *Sau đó kiểm tra trên virt-manager*
 
