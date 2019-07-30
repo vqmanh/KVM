@@ -25,15 +25,16 @@ Như các bạn đã thấy máy centos7.0 đang chạy, chúng ta dùng lệnh 
 
 `openssl passwd -1 pass_mới`
 
-VD:
+
 
 <img src=https://imgur.com/mWZBzON.jpg>
 
-***Sau đó chạy lệnh sau***
+***Sau đó chạy lệnh sau, đối với máy ảo centos7***
 
 `guestfish --rw -a /var/lib/libvirt/images/centos7.0.qcow2`
 
 <img src=https://imgur.com/a6OyIN7.jpg>
+
 
 ***Tiếp theo sử dụng các lệnh sau***
 
@@ -43,12 +44,17 @@ VD:
 /dev/sda1: xfs
 /dev/centos/root: xfs
 /dev/centos/swap: swap
-><fs> mount /dev/centos/root / #mount phân vùng
+><fs> mount /dev/centos/root / 
+#lưu ý lựa chọn mount vào phân vùng của hệ thống có chứa thư mục /etc. 
 ><fs> vi /etc/shadow #chỉnh sửa file shadow
 
 ````
 
 <img src=https://imgur.com/7M3NXpb.jpg>
+
+VD: Tương tự đối với máy ảo ubuntu
+
+<img src=https://imgur.com/Def94nG.jpg>
 
 ***Sau khi chạy xong lệnh vi /etc/shadow, sửa pass mã hóa ở phần root bằng pass mã hóa mới từ lệnh openssl ở bên trên rồi lưu lại***
 
@@ -59,4 +65,6 @@ VD:
 `><fs> quit`
 
 **Bước 4: Mở máy ảo với virt-manager rồi nhập pass mới**
+
+
 
