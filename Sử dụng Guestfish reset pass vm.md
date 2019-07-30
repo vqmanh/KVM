@@ -44,7 +44,6 @@
 /dev/centos/root: xfs
 /dev/centos/swap: swap
 ><fs> mount /dev/centos/root / 
-#lưu ý lựa chọn mount vào phân vùng của hệ thống có chứa thư mục /etc. 
 ><fs> vi /etc/shadow #chỉnh sửa file shadow
 
 ````
@@ -54,6 +53,8 @@
 VD: Tương tự đối với máy ảo ubuntu
 
 <img src=https://imgur.com/Def94nG.jpg>
+
+***lưu ý lựa chọn mount vào phân vùng của hệ thống có chứa thư mục /etc***
 
 ***Sau khi chạy xong lệnh vi /etc/shadow, sửa pass mã hóa ở phần root bằng pass mã hóa mới từ lệnh openssl ở bên trên rồi lưu lại***
 
