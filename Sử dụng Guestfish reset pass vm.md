@@ -13,11 +13,10 @@
 
 **Bước 2: Shutdown máy ảo**
 
-<img src=https://imgur.com/oQNBXBo.jpg>
+<img src=https://imgur.com/ZfdA47y.jpg>
 
-Như các bạn đã thấy máy centos7.0 đang chạy, chúng ta dùng lệnh để tắt máy ảo: 
 
-`virsh shutdown centos7.0`
+`virsh shutdown tên_máy_ảo`
 
 **Bước 3: Đặt lại, thay đổi mật khẩu gốc bằng cách sử dụng Guestfish**
 
