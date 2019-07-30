@@ -3,7 +3,7 @@
 ## Chuẩn bị bài LAB:
 
 - Trên môi trường VMware, sử dụng một máy ảo Centos7 đã cài đặt KVM.
-- Tạo một máy ảo centos7.0 với định dạng qcow2
+- Tạo một máy ảo centos hoặc ubuntu với định dạng qcow2
 
 ## Tiến hành
 
